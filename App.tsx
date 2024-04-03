@@ -1,118 +1,101 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+// /**
+//  * Sample React Native App
+//  * https://github.com/facebook/react-native
+//  *
+//  * @format
+//  * @flow strict-local
+//  */
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+// import React ,{useEffect,useState}from 'react';
+// import MainStack from './app/routing/MainStack';
+// import {Provider} from 'react-redux';
+// import {StatusBar} from 'react-native';
+// import storePre from './app/redux/store';
+// import DropdownAlert from 'react-native-dropdownalert';
+// import {AlertHelper} from './app/utils/AlertHelper';
+// import {PersistGate} from 'redux-persist/integration/react';
+// import TabNavigationStack from './app/routing/TabNavigationStack';
+// import {navigationTypeTabs} from './app.json';
+// import Feather from 'react-native-vector-icons/Feather'; 
+// import Ionicons from 'react-native-vector-icons/Ionicons'; 
+// import FontAwesome from 'react-native-vector-icons/FontAwesome'; 
+// import MaterialIcons from 'react-native-vector-icons/MaterialIcons'; 
+// import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'; 
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+// MaterialIcons.loadFont()
+// Ionicons.loadFont()
+// FontAwesome.loadFont()
+// Feather.loadFont()
+// MaterialCommunityIcons.loadFont()
+// const App: () => React$Node = () => {
+//   const {persistor, store} = storePre;
+ 
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+//   return (
+//     <Provider store={store}>
+//       <PersistGate loading={null} persistor={persistor}>
+//         {/* navigationTypeTabs ? <TabNavigationStack/> : <MainStack /> */} 
+//         <MainStack />
+//         <DropdownAlert
+//           defaultContainer={{
+//             padding: 8,
+//             paddingTop: StatusBar.currentHeight,
+//             flexDirection: 'row',
+//           }}
+//           ref={(ref) => AlertHelper.setDropDown(ref)}
+//           onClose={() => AlertHelper.invokeOnClose()}
+//         />
+//       </PersistGate>
+//     </Provider>
+//   );
+// };
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+// export default App;
+
+
+import React, { useEffect, useState, useRef } from 'react';
+import MainStack from './app/routing/MainStack';
+import { Provider } from 'react-redux';
+import { StatusBar } from 'react-native';
+import storePre from './app/redux/store';
+import DropdownAlert from 'react-native-dropdownalert';
+import { AlertHelper } from './app/utils/AlertHelper';
+import { PersistGate } from 'redux-persist/integration/react';
+import TabNavigationStack from './app/routing/TabNavigationStack';
+import { navigationTypeTabs } from './app.json';
+import Feather from 'react-native-vector-icons/Feather';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+MaterialIcons.loadFont();
+Ionicons.loadFont();
+FontAwesome.loadFont();
+Feather.loadFont();
+MaterialCommunityIcons.loadFont();
+
+const App = React.forwardRef((props, ref) => {
+  const { persistor, store } = storePre;
+
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        {/* navigationTypeTabs ? <TabNavigationStack/> : <MainStack /> */}
+        <MainStack />
+        <DropdownAlert
+          defaultContainer={{
+            padding: 8,
+            paddingTop: StatusBar.currentHeight,
+            flexDirection: 'row',
+          }}
+          ref={ref} // Pass ref here
+          onClose={() => AlertHelper.invokeOnClose()}
+        />
+      </PersistGate>
+    </Provider>
   );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
 });
 
 export default App;
+
