@@ -1,4 +1,6 @@
-const BASE_URL="https://api.raviecom.site/"
+export const BASE_URL="https://api.raviecom.site/"
+// export const BASE_URL="http://localhost:8080/"
+// const BASE_URL="https://ecom-apis-gfls.onrender.com/"
 export const PRODUCTS_BY_CATEGORY=`${BASE_URL}api/v1/product/product-category` 
 export const PRODUCTS_LIST=`${BASE_URL}api/v1/product/product-list` //jewelery
 export const SEARCH=`${BASE_URL}api/v1/product/search`

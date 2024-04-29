@@ -80,7 +80,8 @@ export default function SearchBox({
           autoFocus={autoFocus}
           onFocus={onFocus} // Corrected onFocus prop
           onRightIconPress={onRightIconPress}
-          style={{flex: 1, paddingLeft: scale(10)}}
+          style={{flex: 1, paddingLeft: scale(10),}}
+          
         />
       </View>
       {/* {!hideCamera && (

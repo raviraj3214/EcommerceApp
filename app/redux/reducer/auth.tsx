@@ -19,6 +19,7 @@ export default function (state = initialState, action) {
         isGuest: false,
       };
     case LOG_OUT:
+      console.log('logout is running ...................................................');
       return {
         ...state,
         user: {},

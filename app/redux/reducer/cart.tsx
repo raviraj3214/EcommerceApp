@@ -42,7 +42,7 @@
 //       return state;
 //   }
 // }
-import { ADD_TO_CART, REMOVE_FROM_CART, GET_FROM_CART, UPDATE_CART } from '../cartAction'; //action
+import { ADD_TO_CART, REMOVE_FROM_CART, GET_FROM_CART, UPDATE_CART, DELETE_CART } from '../cartAction'; //action
 
 const initialState = {
   cartItems: [], // multiple
@@ -101,6 +101,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
       };
+    case DELETE_CART:
+      return {
+        ...state,
+        cartItems: [],
+           };
     default:
       return state;
   }

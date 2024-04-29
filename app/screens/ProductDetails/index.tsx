@@ -11,9 +11,27 @@ import ReviewComp from '../../components/ReviewComp';
 import BottomButtons from '../../components/BottomButtons';
 import ReduxWrapper from '../../utils/ReduxWrapper';
 
-function index({wishList:{wishItemNames},cart,addToWishList$,addToCart$, navigation,route:{params}}) {
-   
-  const {_id,title, name,description, detail, price, size, color, image, isFav,rating} = params.item;
+function index({
+  wishList: {wishItemNames},
+  cart,
+  addToWishList$,
+  addToCart$,
+  navigation,
+  route: {params},
+}) {
+  const {
+    _id,
+    title,
+    name,
+    description,
+    detail,
+    price,
+    size,
+    color,
+    image,
+    isFav,
+    rating,
+  } = params.item;
   //console.warn({cartItems});
   // const onAddToCart = () => {
   //   addToCart$({item, quantity:1});
@@ -25,26 +43,29 @@ function index({wishList:{wishItemNames},cart,addToWishList$,addToCart$, navigat
   // };
   const onAddToCart = () => {
     // Create a copy of the params.item object
-    const itemWithQuantity = { ...params.item };
+    const itemWithQuantity = {...params.item};
     // Add the quantity key-value pair with a value of 1
     itemWithQuantity.quantity = 1;
     // Call the addToCart$ function with the modified item object
     addToCart$(itemWithQuantity);
     // Log the modified item object
-    console.log("Modified item with quantity:", itemWithQuantity);
+    console.log('Modified item with quantity:', itemWithQuantity);
   };
   const _renderBottom = () => {
     return (
-      <BottomButtons
-        onPress={() => {
-          onAddToCart();
-          navigation.navigate('Cart');
-        }}
-        price={price}
-        buttonLabel="ADD"
-      />
+      <View style={{backgroundColor: 'red', bottom: scale(-15)}}>
+        <BottomButtons
+          onPress={() => {
+            onAddToCart();
+            navigation.navigate('Cart');
+          }}
+          price={price}
+          buttonLabel="ADD"
+        />
+      </View>
     );
   };
+
   return (
     <>
       <Container bodyStyle={{paddingHorizontal: scale(0)}} isScrollable>
@@ -52,7 +73,7 @@ function index({wishList:{wishItemNames},cart,addToWishList$,addToCart$, navigat
           <ImageBackground
             style={{height: scale(400), width: '100%'}}
             resizeMode="cover"
-            source={{uri:image} }>
+            source={{uri: image}}>
             <View
               style={{
                 marginTop: scale(40),
@@ -70,7 +91,7 @@ function index({wishList:{wishItemNames},cart,addToWishList$,addToCart$, navigat
               </Pressable>
 
               <Pressable
-                onPress={()=>addToWishList$(params.item)}
+                onPress={() => addToWishList$(params.item)}
                 style={{
                   borderRadius: scale(25),
                   backgroundColor: appColors.white,
@@ -79,7 +100,15 @@ function index({wishList:{wishItemNames},cart,addToWishList$,addToCart$, navigat
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}>
-                <Feather name="star" size={scale(20)} color={wishItemNames?.includes(name )? appColors.primary : appColors.black} />
+                <Feather
+                  name="star"
+                  size={scale(20)}
+                  color={
+                    wishItemNames?.includes(name)
+                      ? appColors.primary
+                      : appColors.black
+                  }
+                />
               </Pressable>
             </View>
           </ImageBackground>
@@ -133,11 +162,12 @@ function index({wishList:{wishItemNames},cart,addToWishList$,addToCart$, navigat
           </View>
         </View>
       </Container>
+
       {_renderBottom()}
     </>
   );
 }
-export default  ReduxWrapper(index)
+export default ReduxWrapper(index);
 
 const styles = StyleSheet.create({
   sizeContainer: {

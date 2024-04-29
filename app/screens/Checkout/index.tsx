@@ -1,13 +1,29 @@
 import React from 'react';
 import {View, Text, FlatList, TextInput,KeyboardAvoidingView } from 'react-native';
 import Container from '../../components/Container';
-import {bestSellersList} from '../../utils/MockData';
 import CheckOutItem from '../../components/CheckOutItem';
 import {scale} from 'react-native-size-matters';
 import {appColors} from '../../utils/appColors';
 import Label from '../../components/Label';
 import CustomButton from '../../components/CustomButton';
-export default function index({navigation}) {
+import ReduxWrapper from '../../utils/ReduxWrapper';
+function index({navigation,cart,update_cart$}) {
+  const getAmount = () => {
+    let amount = 0;
+    cart.cartItems?.forEach(item => {
+      const { price,quantity } = item;
+      // console.log(`price and quantity...........................................................................${price}${quantity}`)
+      amount += price * quantity;
+    });
+    return amount;
+  }
+  const getTotal = () => {
+    const price = getAmount();
+    const total = price + 40;
+    const formattedTotal = `${total.toFixed(2)}`;
+
+     return formattedTotal;
+  }
   return (
     <KeyboardAvoidingView style={{flex:1}}>
       <Container
@@ -21,15 +37,17 @@ export default function index({navigation}) {
           style={{paddingHorizontal: scale(20), paddingVertical: scale(20)}}>
           <FlatList
           showsVerticalScrollIndicator={false}
-            data={bestSellersList}
+            data={cart.cartItems}
             ItemSeparatorComponent={() => <View style={{padding: scale(10)}} />}
             renderItem={({item, index}) => (
-              <CheckOutItem
-                noBg
-                name={item.name}
-                image={item.image}
-                price={item.price}
-              />
+              // <CheckOutItem
+              //   noBg
+              //   name={item.name}
+              //   image={item.image}
+              //   price={item.price}
+              // />
+              <CheckOutItem description={item.description} name={item.name} image={item.image} price={item.price} update_cart$={update_cart$} _id = {item._id} />
+
             )}
           />
         </View>
@@ -59,7 +77,7 @@ export default function index({navigation}) {
                 width: '60%',
               }}
             />
-            <Label text="$4500" style={{fontWeight: '800'}} />
+            <Label text ={getAmount()} style={{fontWeight: '800'}} />
           </View>
 
           <View
@@ -82,11 +100,34 @@ export default function index({navigation}) {
                 width: '60%',
               }}
             />
-            <Label text="$40" style={{fontWeight: '800'}} />
+            <Label text="40" style={{fontWeight: '800'}} />
           </View>
+          <View
+            style={{
+              paddingVertical: scale(20),
+              paddingHorizontal: scale(20),
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
+            <Label
+              text="Total"
+              style={{fontWeight: '400', fontSize: scale(18)}}
+            />
+            <View
+              style={{
+                borderRadius: scale(1),
+                borderWidth: scale(0.5),
+                borderStyle: 'dashed',
+                width: '60%',
+              }}
+            />
+            <Label text = {getTotal()} style={{fontWeight: '800'}} />
+          </View>
+      
         </View>
 
-        <View style={{flex:1, paddingHorizontal: scale(20)}}>
+        {/* <View style={{flex:1, paddingHorizontal: scale(20)}}>
           <View
             style={{
               borderRadius: scale(5),
@@ -102,7 +143,7 @@ export default function index({navigation}) {
             <TextInput  placeholder="Enter Voucher Code" style={{flex:1, fontSize:scale(16)}} />
             <Label text="APPLY" />
           </View>
-        </View>
+        </View> */}
 
         <View
           style={{
@@ -117,3 +158,5 @@ export default function index({navigation}) {
     </KeyboardAvoidingView>
   );
 }
+export default ReduxWrapper(index);
+

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 import {View, Text, Pressable} from 'react-native';
 import {scale} from 'react-native-size-matters';
 import Container from '../../components/Container';
@@ -7,35 +8,43 @@ import CustomButton from '../../components/CustomButton';
 import Label from '../../components/Label';
 import {appColors, shadow} from '../../utils/appColors';
 import Feather from 'react-native-vector-icons/Feather';
-import auth from '@react-native-firebase/auth';
- import {AlertHelper} from '../../utils/AlertHelper'
-export default function index({navigation}) {
+import {AlertHelper} from '../../utils/AlertHelper'
+import ReduxWrapper from '../../utils/ReduxWrapper';
+function index({navigation}) {
   const [userInfo, setUserInfo] = useState({});
+  const [isloading, setisloading] = useState(false);
   const onChnage = (name, text) => {
     setUserInfo({...userInfo, [name]: text});
   };
 
-  const onSignUp = async () => {
-    const {name,email,password,address,phone,answer}=userInfo
-    const response = await fetch("https://api.raviecom.site/api/v1/auth/register", {
-      method: "POST",
+
+const onSignUp = async () => {
+  setisloading(true)
+  const { name, email, password, address, phone, answer } = userInfo;
+
+  try {
+    const response = await axios.post("https://api.raviecom.site/api/v1/auth/register", {
+      name, email, password, address, phone, answer
+    }, {
       headers: {
         "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,email,password,address,phone,answer
-      }),
+      }
     });
 
-    const res = await response.json();
-    if(res && res.data.success){
-      AlertHelper.show("success", "Signup Success, Welcome to Amusoftech")
-      navigation.navigate("Home")
-    }else{
-      AlertHelper.show("error", "Signup Failed, Please Retry")
-    } 
+    if (response.data && response.data.success) {
+      AlertHelper.show("success", "Signup Success, Welcome");
+      setisloading(false)
+      navigation.navigate("Login");
+    } else {
+      AlertHelper.show("error", "Signup Failed, Please Retry");
+    }
+  } catch (error) {
+    // Handle error
+    console.error("Error during signup:", error);
+    AlertHelper.show("error", "An error occurred during signup");
+  }
+};
 
-  };
   return (
     <Container isScrollable>
       <Pressable
@@ -120,8 +129,9 @@ export default function index({navigation}) {
             placeholder="Password"
           />
         </View>
-        <CustomButton onPress={onSignUp} label="Sign up" />
+        <CustomButton isLoading = {isloading} onPress={onSignUp} label="Sign up" />
       </View>
     </Container>
   );
 }
+export default ReduxWrapper(index);

@@ -16,7 +16,7 @@ export default function TabNavigationStack({isAuth}) {
    const [routes, setRoutes] = React.useState(RoutesList/*   [...publicRoutes,...RoutesList ] */ )
 
   return (
-    <NavigationContainer>
+    
       <Tab.Navigator
       screenOptions={{
         headerShown:false
@@ -38,6 +38,6 @@ export default function TabNavigationStack({isAuth}) {
           );
         })}
       </Tab.Navigator>
-    </NavigationContainer>
+  
   );
 }

@@ -198,18 +198,17 @@ function index({
 }) {
   const [page, setPage] = useState(2);
   const [allProducts, setAllProducts] = useState([]);
+
   const fetchMoreData = () => {
     const l = products.products.length;
-    if (l<60) {
+    if (l < 60) {
       setPage(page + 1);
       console.log(
         'pages no................................................................................................................',
         page
       );
       getProductsList$(page);
-      
-
-    }
+    } 
   };
   useEffect(() => {
     // Concatenate new products with existing ones when products update
@@ -245,7 +244,6 @@ function index({
     <Container isScrollable style={styles.container}>
       <View style={{ paddingTop: scale(20) }}>
         <SearchBox
-          onRightIconPress={() => navigation.navigate('Search')}
           onFocus={() => navigation.navigate('Search')}
         />
       </View>
@@ -277,6 +275,8 @@ function index({
                     justifyContent: 'center',
                     alignItems: 'center',
                     borderRadius: scale(40),
+                    overflow: 'hidden',
+                    
                   }}
                 >
                   <ImageComponent />
@@ -289,7 +289,7 @@ function index({
           }}
         />
       </View>
-      <FlatList
+      <FlatList style={{ paddingBottom:"22%", }}
         nestedScrollEnabled
         showsVerticalScrollIndicator={true}
         ItemSeparatorComponent={() => <View style={{ padding: scale(5) }} />}
@@ -309,7 +309,10 @@ function index({
         )}
         onEndReachedThreshold={0.2}
         onEndReached={fetchMoreData}
-        ListFooterComponent={() => <ActivityIndicator style={{ marginVertical: scale(20) }} />}
+        ListFooterComponent={() => (
+          // Conditional rendering of ActivityIndicator based on loading state
+          products.loadingpro ? <ActivityIndicator style={{ marginVertical: scale(20) }} /> : null
+        )}
       />
     </Container>
   );

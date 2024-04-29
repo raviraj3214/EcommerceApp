@@ -2,6 +2,7 @@ export const ADD_TO_CART = "ADD_TO_CART" // ACTION TYPE
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART" // ACTION TYPE 
 export const GET_FROM_CART = "GET_FROM_CART" // ACTION TYPE 
 export const UPDATE_CART = "UPDATE_CART"
+export const DELETE_CART = "DELETE_CART"
 
 
 /**
@@ -34,3 +35,8 @@ export const update_cart = (payload)=>({
     payload,
 })
 
+
+export const delete_cart = (payload)=>({
+    type: DELETE_CART,
+    payload,
+})

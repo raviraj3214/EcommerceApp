@@ -47,7 +47,7 @@ function index({ navigation, getSearch$ }) {
               onChangeText={handleInputData}
               value={inputData}
               onSubmitEditing={handleSearch} // Call handleSearch when user taps enter
-              style={{ flex: 1, paddingLeft: scale(10) }}
+              style={{ flex: 1, paddingLeft: scale(10), color: appColors.black, }}
               placeholder="Search..."
             />
           </View>

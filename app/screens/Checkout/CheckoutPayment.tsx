@@ -1,14 +1,51 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {View, Text,FlatList,Pressable} from 'react-native';
 import { scale } from 'react-native-size-matters';
 import Feather from 'react-native-vector-icons/Feather';
 import { appColors } from '../../utils/appColors';
+// import { Braintree } from 'react-native-braintree-sdk'; // Import Braintree
 import { paymentMethods } from '../../utils/MockData';
 import CustomInput from '../../components/CustomInput';
 import CheckBox from '../../components/CheckBox';
 import Label from '../../components/Label';
+
 import { color } from 'react-native-reanimated';
+// import { BASE_URL } from '../../utils/ApiList';
 export default function CheckoutPayment() {
+  // const [clientToken,setClientToken] = useState("");
+     //get payment gateway token
+  // const getToken = async () => {
+  //   try {
+      
+  //     const { data } = await axios.get(`${BASE_URL}/api/v1/product/braintree/token`);
+  //     setClientToken(data?.clientToken);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getToken();
+  // }, []);
+  //handle payments
+  // const handlePayment = async () => {
+  //   try {
+  //     const nonce = await Braintree.tokenizeCard();
+  //     console.log("nonce",nonce)
+    
+  //     const { data } = await axios.post(`${BASE_URL}/api/v1/product/braintree/payment`, {
+  //       nonce,
+  //       cart,
+  //     });
+  //     setLoading(false);
+  //     localStorage.removeItem("cart");
+  //     setCart([]);
+  //     navigate("/dashboard/user/orders");
+  //     toast.success("Payment Completed Successfully ");
+  //   } catch (error) {
+  //     console.log("error error",error.response.data);
+  //     setLoading(false);
+  //   }
+  // };
     const [selectedMethod, setSelectedMethod] = useState("credit-card")
   const SquareCard = ({item}) => {
     return (

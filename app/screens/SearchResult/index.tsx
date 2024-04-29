@@ -37,7 +37,7 @@ function index({products,navigation, route: {params}}) {
 
   return (
     <>
-      <Container sScrollable style={styles.container}>
+      <Container Scrollable style={styles.container}>
        {/*  {_renderHeader()}
         <View style={{paddingVertical: scale(20)}}>
           <TitleComp heading={'Top Brands'} />
@@ -47,9 +47,10 @@ function index({products,navigation, route: {params}}) {
           </View>
         </View> */}
         <View style={{ paddingTop: scale(20) }}>
-      <SearchBox onFoucs={() => navigation.navigate('Search')} /> 
+      <SearchBox onRightIconPress={() => navigation.navigate('Search')}
+          onFocus={() => navigation.navigate('Search')} /> 
       </View>
-        <View style={{flexDirection: 'column',}}>
+        <View style={{flexDirection: 'column',paddingBottom: "22%"}}>
           <FlatList 
           refreshControl={
             <RefreshControl colors={[appColors.primary, appColors.secondary]} refreshing={refreshing} onRefresh={onRefresh} />
@@ -65,14 +66,14 @@ function index({products,navigation, route: {params}}) {
                 key={index}
                 navigation={navigation}
                 item={item}
-                style={{marginHorizontal: scale(5), marginBottom: scale(10),}} // Add margin styles here
+                style={{marginHorizontal: scale(5), marginBottom: scale(20),}} // Add margin styles here
 
               />
             )}
           />
         </View>
       </Container>
-      <BottomButtons onPress={()=> navigation.navigate("Filters")} priceLabel={'No Filter Applied'} buttonLabel="Filter" />
+      {/* <BottomButtons onPress={()=> navigation.navigate("Filters")} priceLabel={'No Filter Applied'} buttonLabel="Filter" /> */}
     </>
   );
 }

@@ -18,17 +18,17 @@ import ReduxWrapper from '../../utils/ReduxWrapper';
 function index({getProductsList$,loginUser$, navigation,logoutUser$}) {
   const [credentials, setCredentials] = useState({});
   const [isloading, setisloading] = useState(false);
-  const onGoogleLogin  =async ()=>{
-   const {user,additionalUserInfo} =await googleLogin()
-  const {email,displayName,uid,photoURL} =user
-   if(additionalUserInfo?.isNewUser){
-    const {providerId,profile} =additionalUserInfo
-     //create new user and login
-    await writeData('users',{email , name: displayName  , uid ,photoURL,providerId,profile} )
-   } 
-   getProductsList$()
-   loginUser$({email , name: displayName  , uid ,photoURL} );
-  }
+  // const onGoogleLogin  =async ()=>{
+  //  const {user,additionalUserInfo} =await googleLogin()
+  // const {email,displayName,uid,photoURL} =user
+  //  if(additionalUserInfo?.isNewUser){
+  //   const {providerId,profile} =additionalUserInfo
+  //    //create new user and login
+  //   await writeData('users',{email , name: displayName  , uid ,photoURL,providerId,profile} )
+  //  } 
+  //  getProductsList$()
+  //  loginUser$({email , name: displayName  , uid ,photoURL} );
+  // }
   const onLogin = async () => {
     const {email, password} = credentials;
 
@@ -144,7 +144,7 @@ function index({getProductsList$,loginUser$, navigation,logoutUser$}) {
         </Pressable>
         <CustomButton isLoading={isloading}  onPress={onLogin} label="Sign in" />
       </View>
-      <View
+      {/* <View
         style={{
           justifyContent: 'center',
           alignItems: 'center',
@@ -164,7 +164,7 @@ function index({getProductsList$,loginUser$, navigation,logoutUser$}) {
         label="Sign in"
         unFilled
       />
-      <CustomButton    onPress={onLogin} icon="twitter" label="Sign in" unFilled />
+      <CustomButton    onPress={onLogin} icon="twitter" label="Sign in" unFilled /> */}
     </Container>
   );
 }

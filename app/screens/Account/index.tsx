@@ -41,9 +41,13 @@ function index({navigation,logoutUser$,auth,updateUser$}) {
     }
   };
   const onLogout = () => {
-    logoutUser$;
-    navigation.navigate('Login');
-
+    logoutUser$();
+    setTimeout(() => {
+      const t = auth.isGuest;
+      console.log("hey auth ......................................................................",t);
+      navigation.navigate('Login');
+      // Add any additional code you want to run after 2 seconds
+    }, 2000); // 2000 milliseconds = 2 seconds
   };
   const onEdit = () => {
     setModalVisible(true)

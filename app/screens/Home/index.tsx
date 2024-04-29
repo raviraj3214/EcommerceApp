@@ -72,7 +72,7 @@ function Home({
             const {label, ImageComponent} = item;
             return (
               <View key={index} style={{alignItems: 'center'}}>
-                <TouchableRipple
+                <TouchableOpacity
                   onPress={() => {
                     getProducts$(label);
                     navigation.navigate('Category', {item});
@@ -88,10 +88,11 @@ function Home({
                     justifyContent: 'center',
                     alignItems: 'center',
                     borderRadius: scale(40),
+                    overflow: 'hidden',
                   }}>
                   {/* <Icon /> */}
                   <ImageComponent />
-                </TouchableRipple>
+                </TouchableOpacity>
                 <View style={{marginTop: scale(15)}}>
                   <Label text={label} style={{fontSize: scale(14)}} />
                 </View>

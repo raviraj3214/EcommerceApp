@@ -133,15 +133,15 @@ export const categoriesList = [
   },
   {
     label: 'Laptop',
-    ImageComponent: () => <Image source={{ uri:'https://api.raviecom.site/api/v1/product/product-photo/65acb9f2099abe096f54b355' }} style={{ width: 48, height: 48, }} />,
+    ImageComponent: () => <Image source={{ uri:'https://api.raviecom.site/api/v1/product/product-photo/65acb9f2099abe096f54b355' }} style={{ width: 54, height: 54, }} />,
   },
   {
     label: 'Watch',
-    ImageComponent: () => <Image source={{ uri: 'https://api.raviecom.site/api/v1/product/product-photo/6458d7885842bb6ed1ddaf9e'}} style={{ width: 48, height: 48, }} />,
+    ImageComponent: () => <Image source={{ uri: 'https://api.raviecom.site/api/v1/product/product-photo/6458d7885842bb6ed1ddaf9e'}} style={{ width: 50, height: 50, }} />,
   },
   {
     label: 'Wall Clock',
-    ImageComponent: () => <Image source={{ uri:'https://api.raviecom.site/api/v1/product/product-photo/6458d8b85842bb6ed1ddafe4'}} style={{ width: 48, height: 48, }} />,
+    ImageComponent: () => <Image source={{ uri:'https://api.raviecom.site/api/v1/product/product-photo/6458d8b85842bb6ed1ddafe4'}} style={{ width: 54, height: 54, }} />,
   },
   {
     label: 'Headphone',
@@ -165,13 +165,13 @@ export const topBrands = [
   },
 ];
 export const recentSearches = [
-  'Amusoftech',
-  'Shoes',
-  'Caps',
-  'Apple',
-  'Google',
-  'Macbook',
-  'Sport weares',
+  'Laptop',
+  'Smartphone',
+  'Shirt',
+  'Toy',
+  'Watch',
+  'Clock',
+  'Headphone',
 ];
 
 export const deliveryTypes = [

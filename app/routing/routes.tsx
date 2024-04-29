@@ -17,6 +17,7 @@ import Summary from '../screens/Summary';
 import Account from '../screens/Account';
 import WishList from '../screens/WishList';
 
+
 import Orders from '../screens/Orders';
 import Address from '../screens/Address';
 import Feather from 'react-native-vector-icons/dist/Feather';
@@ -26,6 +27,8 @@ import Category from '../screens/Category';
 import SearchResult from '../screens/SearchResult';
 import Products from '../screens/Products';
 import Login from '../screens/Login';
+import SignUp from '../screens/SignUp';
+import Razorpay from '../screens/Checkout/Razorpay';
 export const RoutesList = [
  
   {
@@ -88,13 +91,13 @@ export const RoutesList = [
     },
   },
   {
-    name: 'Login',
-    component: Login,
+    name: 'Razorpay',
+    component: Razorpay,
     options: {
       tabBarButton: (props) => null,
       tabBarVisible: false,
       tabBarBadge: 3,
-      tabBarLabel: 'Login',
+      tabBarLabel: 'Razorpay',
     },
   },
   {

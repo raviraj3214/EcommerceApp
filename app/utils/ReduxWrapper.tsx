@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser, logoutUser,updateUser } from '../redux/authAction';
-import { addToCart, removeFromCart,getFromCart,update_cart } from '../redux/cartAction';
+import { addToCart, removeFromCart,getFromCart,update_cart,delete_cart } from '../redux/cartAction';
 import { getProducts, getProductsList, getSearch } from '../redux/productAction';
 import { addToWishList, removeToWishList } from '../redux/wishListAction';
 export const mapStateToProps = (state) => ({
@@ -17,6 +17,7 @@ export const mapDispatchToProps = {
   getFromCart$: getFromCart,
   removeFromCart$: removeFromCart,
   update_cart$: update_cart,
+  delete_cart$: delete_cart,
   getProducts$: getProducts,
   addToWishList$: addToWishList,
   removeToWishList$: removeToWishList,
