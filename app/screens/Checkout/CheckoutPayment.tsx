@@ -12,41 +12,8 @@ import Label from '../../components/Label';
 import { color } from 'react-native-reanimated';
 // import { BASE_URL } from '../../utils/ApiList';
 export default function CheckoutPayment() {
-  // const [clientToken,setClientToken] = useState("");
-     //get payment gateway token
-  // const getToken = async () => {
-  //   try {
-      
-  //     const { data } = await axios.get(`${BASE_URL}/api/v1/product/braintree/token`);
-  //     setClientToken(data?.clientToken);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getToken();
-  // }, []);
-  //handle payments
-  // const handlePayment = async () => {
-  //   try {
-  //     const nonce = await Braintree.tokenizeCard();
-  //     console.log("nonce",nonce)
-    
-  //     const { data } = await axios.post(`${BASE_URL}/api/v1/product/braintree/payment`, {
-  //       nonce,
-  //       cart,
-  //     });
-  //     setLoading(false);
-  //     localStorage.removeItem("cart");
-  //     setCart([]);
-  //     navigate("/dashboard/user/orders");
-  //     toast.success("Payment Completed Successfully ");
-  //   } catch (error) {
-  //     console.log("error error",error.response.data);
-  //     setLoading(false);
-  //   }
-  // };
-    const [selectedMethod, setSelectedMethod] = useState("credit-card")
+  
+  const [selectedMethod, setSelectedMethod] = useState("credit-card")
   const SquareCard = ({item}) => {
     return (
       <Pressable onPress={()=> setSelectedMethod(item)} style={{width:scale(100),height:scale(80), backgroundColor: selectedMethod=== item ? appColors.primary : appColors.white, borderRadius:scale(5), justifyContent:'center', alignItems:'center'}}>

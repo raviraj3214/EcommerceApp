@@ -11,24 +11,7 @@ function convertToSlug(text) {
     .replace(/--+/g, '-') // Replace multiple dashes with a single dash
     .trim(); // Trim leading and trailing spaces
 }
-// export function* workerGetProducts(action) {
-//   if (action) {
-//       yield put(setLoading(true)); // Set loading to true before API call
-//       const category = convertToSlug(action.payload); // Convert category to slug format
-//       const URL=`${PRODUCTS_BY_CATEGORY}/${category}`
-//       const data = yield axiosFetch(URL)
-       
-//       const result = data.products.map(product => ({
-//         ...product,
-//         image: `https://api.raviecom.site/api/v1/product/product-photo/${product._id}`
-//       }));  
-//       // console.log('Type of result',  result);
 
-//       // console.log('Type of data.products:',  data.products);
-
-//       yield put({ type:SET_PRODUCTS, payload: result })
-//   }
-// }
 export function* workerGetProducts(action) {
   try {
     if (action) {
@@ -39,7 +22,7 @@ export function* workerGetProducts(action) {
 
       const result = data.products.map((product) => ({
         ...product,
-        image: `https://api.raviecom.site/api/v1/product/product-photo/${product._id}`,
+        image: `${process.env.SERVER_URL}api/v1/product/product-photo/${product._id}`,
       }));
 
       yield put({ type: SET_PRODUCTS, payload: result });
@@ -57,22 +40,6 @@ export function* watcherGetProducts() {
   yield takeLatest(GET_PRODUCTS,workerGetProducts)
 }
 
-
-
-// export function* workerGetProductsList(action) {
-//   if (action) {
-//       const page = action.payload;
-//       const URL=`${PRODUCTS_LIST}/${page}`
-//       // console.log({URL});
-//       const data = yield axiosFetch(URL)      
-//       // console.warn(`data products ${data.products}`);
-//       const result = data.products.map(product => ({
-//         ...product,
-//         image: `https://api.raviecom.site/api/v1/product/product-photo/${product._id}`
-//       }));
-//       yield put({ type:SET_PRODUCTS_LIST, payload: result })
-//   }
-// }
 export function* workerGetProductsList(action) {
   try {
     if (action) {
@@ -83,7 +50,7 @@ export function* workerGetProductsList(action) {
       const data = yield axiosFetch(URL);
       const result = data.products.map((product) => ({
         ...product,
-        image: `https://api.raviecom.site/api/v1/product/product-photo/${product._id}`,
+        image: `${process.env.SERVER_URL}api/v1/product/product-photo/${product._id}`,
       }));
       yield put({ type: SET_PRODUCTS_LIST, payload: result });
     }
@@ -117,7 +84,7 @@ export function* watcherSearchProduct(action) {
       // console.warn(`data products............................................................................................................... ${res.data}`);
       const result = res.map(product => ({
         ...product,
-        image: `https://api.raviecom.site/api/v1/product/product-photo/${product._id}`
+        image: `${process.env.SERVER_URL}api/v1/product/product-photo/${product._id}`
       }));
       const e = Object.keys(result[0]) 
       // console.warn(`data result watcher keys............................................................................................................... ${e}`);

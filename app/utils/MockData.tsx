@@ -125,31 +125,31 @@ export const reviews = [
 export const categoriesList = [
   {
     label: 'Men Wears',
-    ImageComponent: () => <Image source={{ uri: 'https://api.raviecom.site/api/v1/product/product-photo/647c3127570339084fa7bdc9' }} style={{ width: 40, height: 40, }} />,
+    ImageComponent: () => <Image source={{ uri: `${process.env.SERVER_URL}api/v1/product/product-photo/647c3127570339084fa7bdc9` }} style={{ width: 40, height: 40, }} />,
   },  
   {
     label: 'Smartphone',
-    ImageComponent: () => <Image source={{ uri:'https://api.raviecom.site/api/v1/product/product-photo/65ad12ff099abe096f54b700' }} style={{ width: 52, height: 52,}} />,
+    ImageComponent: () => <Image source={{ uri:`${process.env.SERVER_URL}api/v1/product/product-photo/65ad12ff099abe096f54b700` }} style={{ width: 52, height: 52,}} />,
   },
   {
     label: 'Laptop',
-    ImageComponent: () => <Image source={{ uri:'https://api.raviecom.site/api/v1/product/product-photo/65acb9f2099abe096f54b355' }} style={{ width: 54, height: 54, }} />,
+    ImageComponent: () => <Image source={{ uri:`${process.env.SERVER_URL}api/v1/product/product-photo/65acb9f2099abe096f54b355` }} style={{ width: 54, height: 54, }} />,
   },
   {
     label: 'Watch',
-    ImageComponent: () => <Image source={{ uri: 'https://api.raviecom.site/api/v1/product/product-photo/6458d7885842bb6ed1ddaf9e'}} style={{ width: 50, height: 50, }} />,
+    ImageComponent: () => <Image source={{ uri: `${process.env.SERVER_URL}api/v1/product/product-photo/6458d7885842bb6ed1ddaf9e`}} style={{ width: 50, height: 50, }} />,
   },
   {
     label: 'Wall Clock',
-    ImageComponent: () => <Image source={{ uri:'https://api.raviecom.site/api/v1/product/product-photo/6458d8b85842bb6ed1ddafe4'}} style={{ width: 54, height: 54, }} />,
+    ImageComponent: () => <Image source={{ uri:`${process.env.SERVER_URL}api/v1/product/product-photo/6458d8b85842bb6ed1ddafe4`}} style={{ width: 54, height: 54, }} />,
   },
   {
     label: 'Headphone',
-    ImageComponent: () => <Image source={{uri:'https://api.raviecom.site/api/v1/product/product-photo/65ad285a9de6515eaa20a268 '}} style={{ width: 48, height: 48, }} />,
+    ImageComponent: () => <Image source={{uri:`${process.env.SERVER_URL}api/v1/product/product-photo/65ad285a9de6515eaa20a268`}} style={{ width: 48, height: 48, }} />,
   },
   {
     label: 'Toy',
-    ImageComponent: () => <Image source={{ uri:'https://api.raviecom.site/api/v1/product/product-photo/647c41ba671e3ee0ed0e50a2' }} style={{ width: 48, height: 48, }} />,
+    ImageComponent: () => <Image source={{ uri:`${process.env.SERVER_URL}api/v1/product/product-photo/647c41ba671e3ee0ed0e50a2` }} style={{ width: 48, height: 48, }} />,
   },
 ];
 export const topBrands = [

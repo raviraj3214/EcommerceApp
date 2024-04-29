@@ -35,7 +35,7 @@ function index({getProductsList$,loginUser$, navigation,logoutUser$}) {
     try {
         if(email && password){
           setisloading(true);
-          const res = await axios.post("https://api.raviecom.site/api/v1/auth/login", {
+          const res = await axios.post(`${process.env.SERVER_URL}api/v1/auth/login`, {
             email,
             password,
           });

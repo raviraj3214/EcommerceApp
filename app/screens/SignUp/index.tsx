@@ -23,7 +23,7 @@ const onSignUp = async () => {
   const { name, email, password, address, phone, answer } = userInfo;
 
   try {
-    const response = await axios.post("https://api.raviecom.site/api/v1/auth/register", {
+    const response = await axios.post(`${process.env.SERVER_URL}api/v1/auth/register`, {
       name, email, password, address, phone, answer
     }, {
       headers: {
